@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Draggable Calculator</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden; /* Prevent scrolling */
+        }
+        .modal {
+            display: block; /* Show modal */
+            position: fixed; /* Stay in place */
+            z-index: 1; /* Sit on top */
+            left: 50%; /* Center horizontally */
+            top: 50%; /* Center vertically */
+            transform: translate(-50%, -50%); /* Adjust for centering */
+            width: 300px; /* Fixed width */
+            padding: 20px;
+            background-color: #fefefe;
+            border: 1px solid #888;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+        .modal-header {
+            cursor: move; /* Move cursor on hover */
+            padding: 10px;
+            background-color: #f1f1f1;
+            border-bottom: 1px solid #888;
+        }
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        input[type="button"] {
+            width: 50px;
+            height: 50px;
+            font-size: 20px;
+        }
+        #result {
+            width: 100%;
+            height: 40px;
+            font-size: 20px;
+            text-align: right;
+        }
+    </style>
+</head>
+<body>
+
+<div id="myModal" class="modal">
+    <div class="modal-header">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <h2>Calculator</h2>
+    </div>
+    <input type="text" id="result" disabled>
+    <br>
+    <input type="button" value="1" onclick="appendToResult('1')">
+    <input type="button" value="2" onclick="appendToResult('2')">
+    <input type="button" value="3" onclick="appendToResult('3')">
+    <input type="button" value="+" onclick="appendToResult('+')">
+    <br>
+    <input type="button" value="4" onclick="appendToResult('4')">
+    <input type="button" value="5" onclick="appendToResult('5')">
+    <input type="button" value="6" onclick="appendToResult('6')">
+    <input type="button" value="-" onclick="appendToResult('-')">
+    <br>
+    <input type="button" value="7" onclick="appendToResult('7')">
+    <input type="button" value="8" onclick="appendToResult('8')">
+    <input type="button" value="9" onclick="appendToResult('9')">
+    <input type="button" value="*" onclick="appendToResult('*')">
+    <br>
+    <input type="button" value="C" onclick="clearResult()">
+    <input type="button" value="0" onclick="appendToResult('0')">
+    <input type="button" value="=" onclick="calculateResult()">
+    <input type="button" value="/" onclick="appendToResult('/')">
+</div>
+
+<script>
+    // Make the modal draggable
+    dragElement(document.getElementById("myModal"));
+
+    function dragElement(el) {
+        var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
+        if (document.getElementsByClassName("modal-header")[0]) {
+            document.getElementsByClassName("modal-header")[0].onmousedown = dragMouseDown;
+        } else {
+            el.onmousedown = dragMouseDown;
+        }
+
+        function dragMouseDown(e) {
+            e = e || window.event;
+            e.preventDefault();
+            pos3 = e.clientX;
+            pos4 = e.clientY;
+            document.onmouseup = closeDragElement;
+ document.onmousemove = elementDrag;
+        }
+
+        function elementDrag(e) {
+            e = e || window.event;
+            e.preventDefault();
+            pos1 = pos3 - e.clientX;
+            pos2 = pos4 - e.clientY;
+            pos3 = e.clientX;
+            pos4 = e.clientY;
+            el.style.top = (el.offsetTop - pos2) + "px";
+            el.style.left = (el.offsetLeft - pos1) + "px";
+        }
+
+        function closeDragElement() {
+            document.onmouseup = null;
+            document.onmousemove = null;
+        }
+    }
+
+    function appendToResult(value) {
+        document.getElementById("result").value += value;
+    }
+
+    function clearResult() {
+        document.getElementById("result").value = '';
+    }
+
+    function calculateResult() {
+        var result = eval(document.getElementById("result").value);
+        document.getElementById("result").value = result;
+    }
+
+    function closeModal() {
+        document.getElementById("myModal").style.display = "none";
+    }
+</script>
+</body>
+</html>

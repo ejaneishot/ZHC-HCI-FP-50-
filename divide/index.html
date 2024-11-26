@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project IDX</title>
+    <style>
+        body {
+            background-color: #181818;
+            color: #fff;
+            font-family: sans-serif;
+            display: flex;
+            flex-direction: column; /* Allow vertical stacking */
+            align-items: center; /* Center content horizontally */
+            margin: 0;
+            padding: 0 240px; /* Add padding to the left and right */
+            box-sizing: border-box; /* Include padding in the width calculation */
+        }
+        .container {
+            text-align: center; /* Center the text inside the container */
+            margin-top: 50px; /* Add space above the container */
+        }
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 2rem;
+        }
+        p {
+            font-size: 1.2rem;
+            line-height: 1.6;
+            margin-bottom: 3rem;
+        }
+        button {
+            background-color: #9370DB;
+            color: #fff;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1.2rem;
+        }
+        .question {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(7, 80px); /* Increased box size */
+            grid-gap: 10px;
+            margin-top: 20px;
+            justify-content: center; /* Center the grid items horizontally */
+            align-items: center; /* Center the grid items vertically */
+        }
+        .box {
+            width: 80px; /* Increased box size */
+            height: 80px; /* Increased box size */
+            background-color: #282828;
+            border: 2px solid #383838;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 36px; /* Increased font size */
+            transition: background-color 0.5s ease-in-out, transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
+        }
+        .box:hover {
+            background-color: #383838;
+            transform: scale(1.1);
+        }
+        .arrow {
+            font-size: 40px; /* Increased arrow size */
+        }
+        .additional-content {
+            margin-top: 30px; /* Add space above additional content */
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+
+        <div class="question" id="question">What if your math learning experience was</div>
+        <div class="grid" id="grid">
+            <div class="box"><span class="arrow">&gt;</span></div>
+            <div class="box" id="box1"></div>
+            <div class="box" id="box2"></div>
+            <div class="box" id="box3"></div>
+            <div class="box" id="box4"></div>
+            <div class="box" id="box5"></div>
+            <div class="box" id="box6"></div>
+            <div class="box" id="box7"></div>
+            <div class="box" id="box8"></div>
+            <div class="box" id="box9"></div>
+            <div class="box" id ="box10"></div>
+            <div class="box" id="box11"></div>
+            <div class="box" id="box12"></div>
+            <div class="box" id="box13"></div>
+            <div class="box" id="box14"></div>
+            <div class="box" id="box15"></div>
+        </div>
+        <br />
+        <br />
+        <br />
+        <br />
+      
+        
+        <center><h1>↓</h1> </center>
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+
+
+        <div class="container">
+            <h1>Welcome to ZHC !</h1>
+            <p>ZHC (Z Help Center) is an online platform dedicated to helping grade 1-12 students learn math. ZHC has a structured curriculum that ranges from basic arithmetic to more complex topics such as calculus and algebra which can help students at any learning level.
+            </p>
+            <a href="login.html">
+                <button id="joinButton">Join the fun!</button>
+            </a>
+             <br />
+             <br />
+             <br />
+             <br />
+             <br />
+             
+        </div>
+    </div>
+
+    <script>
+        const questionElement = document.getElementById('question');
+        const gridElement = document.getElementById('grid');
+        const boxes = gridElement.getElementsByClassName('box');
+        const phrases = ['SIMPLE', 'FUN', 'INTERACTIVE'];
+        let currentPhraseIndex = 0;
+
+        function changeToRandom() {
+            for (let i = 1; i < boxes.length; i++) { // Skip the first box (arrow)
+                boxes[i].textContent = String.fromCharCode(Math.floor(Math.random() * 26) + 65);
+            }
+        }
+
+        function changeToNextPhrase() {
+            const currentPhrase = phrases[currentPhraseIndex];
+            const phraseLength = currentPhrase.length;
+
+            // Hide all boxes except the first box (arrow)
+            for (let i = 1; i < boxes.length; i++) {
+                boxes[i].style.opacity = '0';
+            }
+
+            setTimeout(() => {
+                // Update the boxes to display the new phrase
+                for (let i = 0; i < phraseLength; i++) {
+                    boxes[i + 1].textContent = currentPhrase[i];
+                    boxes[i + 1].style.opacity = '1'; // Show only the required boxes
+                }
+
+                // Hide any remaining boxes
+                for (let i = phraseLength + 1; i < boxes.length; i++) {
+                    boxes[i].textContent = '';
+                    boxes[i].style.opacity = '0';
+                }
+
+                // Cycle to the next phrase
+                currentPhraseIndex = (currentPhraseIndex + 1) % phrases.length;
+            }, 500); // Wait for fade-out
+        }
+
+        function animate() {
+            changeToRandom();
+            setTimeout(() => {
+                changeToNextPhrase();
+                setTimeout(animate, 2000); // Loop animation
+            }, 1000);
+        }
+
+        setTimeout(animate, 2000);
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ZHC</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /*calc*/
+    .modal {
+        display: none; 
+        position: fixed;
+        z-index: 1; 
+        left: 50%; 
+        top: 50%; 
+        transform: translate(-50%, -50%);
+        width: 300px; 
+        padding: 20px;
+        background-color: #fefefe;
+        border: 1px solid #888;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+    .modal-header {
+        cursor: move;
+        padding: 10px;
+        background-color: #f1f1f1;
+        border-bottom: 1px solid #888;
+    }
+    .close {
+        color: #aaa;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+    }
+    .close:hover, .close:focus {
+        color: black;
+        text-decoration: none;
+        cursor: pointer;
+    }
+    input[type="button"] {
+        width: 50px;
+        height: 50px;
+        font-size: 20px;
+    }
+    #result {
+        width: 100%;
+        height: 40px;
+        font-size: 20px;
+        text-align: right;
+    }
+  </style>
+</head>
+<body>
+  <div class="line"></div>
+  <nav class="sidebar">
+    <h3>ZHC</h3>
+    <br /><br />
+    <div class="dropdown-container">
+      <button class="dropdown-button" onclick="toggleDropdown()">
+        <span>a</span>
+        <span class="dropdown-arrow">▼</span>
+      </button>
+      <div class="dropdown-menu">
+        <div class="dropdown-item" onclick="window.location.href='ciluk.html'">ciluk</div>
+        <div class="dropdown-item" onclick="window.location.href='ba.html'">ba</div>
+      </div>
+    </div>
+    <a href="main.html" class="active" onclick="setActive(this)">Home</a>
+    <a href="sidemath.html" onclick="setActive(this)">a</a>
+    <a href="#" onclick="setActive(this)">asd</a>
+    <a href="#" onclick="setActive(this)">Videos</a>
+    <a href="#" onclick="setActive(this)">Mock Exam</a>
+    <a href="#" onclick="setActive(this)">ZHC AI Tutor</a>
+
+    <h2>Subjects</h2>
+    <a href="#" onclick="setActive(this)">abc</a>
+    <a href="#" onclick="setActive(this)">dfg</a>
+    <a href="#" onclick="setActive(this)">sda</a>
+    <a href="#" onclick="setActive(this)">asda</a>
+    <a href="#" onclick="setActive(this)">asda</a>
+    <a href="#" onclick="setActive(this)">asd</a>
+
+    <h2>Misc</h2>
+    <a href="#" onclick="setActive(this)">Saved</a>
+    <a href="#" onclick="setActive(this)">Help Center</a>
+    <a href="#" onclick="setActive(this)">More</a>
+    <a href="settings.html" onclick="setActive(this)">Settings</a>
+    <br /><br />
+  </nav>
+
+  <header class="header">
+    <input type="text" placeholder="Search">
+    <div class="button">
+      <button class="button" onclick="toggleCalculator()">Calculator</button>
+      <button class="button" onclick="window.location.href='login.html'">Login</button>
+      <button class="button" onclick="window.location.href='profile.html'">Profile</button>
+      <button class="button" id="theme-toggle">◑</button>
+    </div>
+  </header>
+
+  <div class="main-content">
+    <div class="banner">
+      <div>
+        <h2>asdasd</h2>
+        <p>asdasd</p>
+      </div>
+      <img src="">
+    </div>
+
+    <div class="content-updates">
+      <strong>Content updates:</strong> u gotta lock in
+    </div>
+
+    <div class="subjects-header">
+      <h2>My Lessons</h2>
+      <div class="button">
+        <button onclick="window.location.href='abc.html'">abc</button>
+        <button onclick="window.location.href='browse.html'">Browse All</button>
+      </div>
+    </div>
+  
+    <div class="subjects">
+      <div class="subject" onclick="window.location.href='subject1.html'">
+        <img src="" alt="">
+        <h2>a</h2>
+      </div>
+      <div class="subject" onclick="window.location.href='subject2.html'">
+        <img src="" alt="">
+        <h2>a</h2>
+      </div>
+      <div class="subject" onclick="window.location.href='subject3.html'">
+        <img src="" alt="">
+        <h2>a</h2>
+      </div>
+      <div class="subject" onclick="window.location.href='subject4.html'">
+        <img src="" alt="">
+        <h2>a</h2>
+      </div>
+      <div class="subject" onclick="window.location.href='subject5.html'">
+        <img src="" alt="">
+        <h2>a</h2>
+      </div>
+      <div class="subject" onclick="window.location.href='subject6.html'">
+        <img src="" alt="">
+        <h2>r</h2>
+      </div>
+    </div>
+  
+    <br />
+  
+    <div class="subjects-header">
+      <h2>Resources and Tools</h2>
+    </div>
+  
+    <div class="subjects">
+      <div class="subject" onclick="window.location.href='tool1.html'">
+        <img src="tool1.png" alt="Tool 1">
+        <h2>Tool 1</h2>
+      </div>
+      <div class="subject" onclick="window.location.href='tool2.html'">
+        <img src="tool2.png" alt="Tool 2">
+        <h2>Tool 2</h2>
+      </div>
+      <div class="subject" onclick="window.location.href='tool3.html'">
+        <img src="tool3.png" alt="Tool 3">
+        <h2>Tool 3</h2>
+      </div>
+      <div class="subject" onclick="window.location.href='tool4.html'">
+        <img src="tool4.png" alt="Tool 4">
+        <h2>Tool 4</h2>
+      </div>
+      <div class="subject" onclick="window.location.href='tool5.html'">
+        <img src="tool5.png" alt="Tool 5">
+        <h2>Tool 5</h2>
+      </div>
+      <div class="subject" onclick="window.location.href='tool6.html'">
+        <img src="tool6.png" alt="Tool 6">
+        <h2>Tool 6</h2>
+      </div>
+      <div class="subject" onclick="window.location.href='tool7.html'">
+        <img src="tool7.png" alt="Tool 7">
+        <h2>Tool 7</h2>
+      </div>
+      <div class="subject" onclick="window.location.href='tool8.html'">
+        <img src="tool8.png" alt="Tool 8">
+        <h2>Tool 8</h2>
+      </div>
+      <div class="subject" onclick="window.location.href='tool9.html'">
+        <img src="tool9.png" alt="Tool 9">
+        <h2>Tool 9</h2>
+      </div>
+    </div>
+  </div>
+  
+  <script src="java.js"></script> 
+  </body>
+  </html>
+  
+  </div>
+
+/*calc program*/
+  <div id="calculatorModal" class="modal">
+    <div class="modal-header">
+      <span class="close" onclick="closeCalculator()">&times;</span>
+      <h2>Calculator</h2>
+    </div>
+    <input type="text" id="result" disabled>
+    <br>
+    <input type="button" value="1" onclick="appendToResult('1')">
+    <input type="button" value="2" onclick="appendToResult('2')">
+    <input type="button" value="3" onclick="appendToResult('3')">
+    <input type="button" value="+" onclick="appendToResult('+')">
+    <br>
+    <input type="button" value="4" onclick="appendToResult('4')">
+    <input type="button" value="5" onclick="appendToResult('5')">
+    <input type="button" value="6" onclick="appendToResult('6')">
+    <input type="button" value="-" onclick="appendToResult('-')">
+    <br>
+    <input type="button" value="7" onclick="appendToResult('7')">
+    <input type="button" value="8" onclick="appendToResult('8')">
+    <input type="button" value="9" onclick="appendToResult('9')">
+    <input type="button" value="*" onclick="appendToResult('*')">
+    <br>
+    <input type="button" value="C" onclick="clearResult()">
+    <input type="button" value="0" onclick="appendToResult('0')">
+    <input type="button" value="=" onclick="calculateResult()">
+    <input type="button" value="/" onclick="appendToResult('/')">
+  </div>
+
+  <!-- JavaScript -->
+  <script>
+    // Toggle calculator visibility
+    function toggleCalculator() {
+        const modal = document.getElementById('calculatorModal');
+        modal.style.display = modal.style.display === 'block' ? 'none' : 'block';
+    }
+
+    // Close calculator
+    function closeCalculator() {
+        document.getElementById('calculatorModal').style.display = 'none';
+    }
+
+    // Make modal draggable
+    dragElement(document.getElementById("calculatorModal"));
+
+    function dragElement(el) {
+        let pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
+        const header = el.getElementsByClassName("modal-header")[0];
+        if (header) {
+            header.onmousedown = dragMouseDown;
+        } else {
+            el.onmousedown = dragMouseDown;
+        }
+
+        function dragMouseDown(e) {
+            e.preventDefault();
+            pos3 = e.clientX;
+            pos4 = e.clientY;
+            document.onmouseup = closeDragElement;
+            document.onmousemove = elementDrag;
+        }
+
+        function elementDrag(e) {
+            e.preventDefault();
+            pos1 = pos3 - e.clientX;
+            pos2 = pos4 - e.clientY;
+            pos3 = e.clientX;
+            pos4 = e.clientY;
+            el.style.top = (el.offsetTop - pos2) + "px";
+            el.style.left = (el.offsetLeft - pos1) + "px";
+        }
+
+        function closeDragElement() {
+            document.onmouseup = null;
+            document.onmousemove = null;
+        }
+    }
+
+    function appendToResult(value) {
+        document.getElementById("result").value += value;
+    }
+
+    function clearResult() {
+        document.getElementById("result").value = '';
+    }
+
+    function calculateResult() {
+        try {
+            document.getElementById("result").value = eval(document.getElementById("result").value);
+        } catch {
+            document.getElementById("result").value = "Error";
+        }
+    }
+  </script>
+</body>
+</html>

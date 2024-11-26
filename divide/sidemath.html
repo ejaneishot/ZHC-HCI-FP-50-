@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <title>Math | ZHC</title>
+  <style>
+    :root {
+      --bg-color: #f7f8fc;
+      --sidebar-bg-color: #ffffff;
+      --header-bg-color: #ffffff;
+      --text-color: #555;
+      --line-color: #e0e0e0; 
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 60px;
+      background-color: var(--header-bg-color);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 20px;
+      border-bottom: 1px solid var(--line-color);
+      z-index: 1000;
+    }
+
+    .header input[type="text"] {
+      margin-left: 200px;
+      padding: 8px;
+      border: 1px solid var(--line-color);
+      border-radius: 4px;
+    }
+
+    .sidebar {
+      position: fixed;
+      top: 60px; 
+      left: 0;
+      width: 220px;
+      height: calc(100vh - 60px); 
+      background-color: var(--sidebar-bg-color);
+      border-right: 1px solid var(--line-color);
+      overflow-y: auto;
+      padding: 15px;
+      box-sizing: border-box;
+    }
+
+    .main-content {
+      margin-top: 60px; 
+      margin-left: 220px; 
+      padding: 20px;
+      background-color: var(--bg-color);
+      flex: 1;
+      min-height: calc(100vh - 60px); 
+      overflow-y: auto;
+    }
+
+    iframe {
+      width: 100%;
+      height: calc(100vh - 60px); 
+      border: none;
+    }
+  </style>
+</head>
+<body>
+ 
+  <header class="header">
+    <input type="text" placeholder="Search">
+    <div class="buttons">
+      <button class="button">Desmos Calculator</button>
+      <button class="button">Login</button>
+      <button class="button">Profile</button>
+      <button class="button" id="theme-toggle">◑</button>
+    </div>
+  </header>
+
+ 
+  <nav class="sidebar">
+    <h1>ZHC</h1>
+    <br />
+    <a href="#" class="active" onclick="setActive(this)">Home</a>
+    <a href="#" onclick="setActive(this)">Grade Your EE/IA</a>
+    <a href="#" onclick="setActive(this)">AI Plagiarism Checker</a>
+    <a href="#" onclick="setActive(this)">Videos</a>
+    <a href="#" onclick="setActive(this)">Mock Exam</a>
+    <a href="#" onclick="setActive(this)">ZHC AI Tutor</a>
+    <h2>Subjects</h2>
+    <a href="#" onclick="setActive(this)">abc</a>
+    <a href="#" onclick="setActive(this)">dfg</a>
+    <a href="#" onclick="setActive(this)">Catherine</a>
+    <a href="#" onclick="setActive(this)">Sasha 2</a>
+    <a href="#" onclick="setActive(this)">Sasha 1</a>
+    <a href="#" onclick="setActive(this)">Nezza</a>
+    <h2>Misc</h2>
+    <a href="#" onclick="setActive(this)">Saved</a>
+    <a href="#" onclick="setActive(this)">Help Center</a>
+    <a href="#" onclick="setActive(this)">More</a>
+    <a href="#" onclick="setActive(this)">Settings</a>
+  </nav>
+
+ 
+  <main class="main-content">
+   
+    <iframe src="math.html"></iframe>
+    <iframe src="settings.html"></iframe>
+  </main>
+
+    <script src="java.js"></script>
+</body>
+</html>

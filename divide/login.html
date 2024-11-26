@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login | ZHC</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      font-family: sans-serif;
+      margin: 0;
+      display: flex;
+      height: 100vh;
+    }
+
+    .left-side {
+      flex: 1;
+      background-image: url('chillguynobg.png'); 
+      background-size: cover;
+      background-position: center;
+    }
+
+    .right-side {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #f4f4f4;
+    }
+
+    .login-form {
+      padding: 30px;
+      width: 350px;
+    }
+
+    .logo {
+      display: flex; 
+      align-items: center; 
+      justify-content: center; 
+      margin-bottom: 30px;
+    }
+
+    .logo img {
+      width: 80px; 
+      margin-right: 10px; 
+    }
+
+    h1 {
+      font-size: 36px; 
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      font-size: 24px; 
+    }
+
+    .social-buttons {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 20px;
+      gap: 10px; 
+    }
+
+    .social-buttons button {
+      display: flex;
+      align-items: center;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 10px; 
+      margin: 0 5px;
+      cursor: pointer;
+      font-size: 16px;
+      color: white;
+    }
+
+    .google-button {
+      background-color: #4285f4;
+    }
+
+    .google-button img {
+      width: 20px;
+      margin-right: 20px; 
+    }
+
+    .email-form {
+      margin-bottom: 20px;
+    }
+
+    .email-form input[type="email"],
+    .email-form input[type="password"] 
+    { 
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      margin-bottom: 10px;
+    }
+
+    .email-form button {
+      width: 100%;
+      padding: 10px;
+      border: none;
+      border-radius: 5px;
+      background-color: #5cb85c;
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    .email-form button:hover {
+      background-color: #4cae4c;
+    }
+
+    .signup-link {
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <div class="left-side"></div>
+  <div class="right-side">
+    <div class="login-form">
+      <div class="logo">
+        <img src="chillguynobg.png" alt="Logo">
+        <h1>ZHC</h1>
+      </div>
+      <h2>Login</h2>
+      <div class="social-buttons">
+        <button class="google-button">
+          <img src="https://w7.pngwing.com/pngs/326/85/png-transparent-google-logo-google-text-trademark-logo-thumbnail.png" alt="Google Logo"> 
+          Continue with Google
+        </button>
+      </div>
+      <form class="email-form" onsubmit="return handleLogin(event)">
+        <input type="email" placeholder="Email" required>
+        <input type="password" placeholder="Password" required> 
+        <button type="submit">Login</button>
+      </form>
+      <div class="signup-link">
+        Don't have an account yet? <a href="signup.html">Sign up</a>
+      </div>
+    </div>
+  </div>
+  <script>
+    function handleLogin(event) {
+      event.preventDefault(); 
+      window.location.href = 'main.html';
+    }
+  </script>
+</body>
+</html>
