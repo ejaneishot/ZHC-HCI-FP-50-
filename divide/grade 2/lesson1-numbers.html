@@ -1,0 +1,180 @@
+<!DOCTYPE html> 
+<html>
+<head>
+  <title>Introduction to Standard Form</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f8f8f8;
+    }
+
+    header {
+      background-color: #fff;
+      padding: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .progress-bar {
+      width: 80%;
+      height: 5px;
+      background-color: #e0e0e0;
+      margin: 30px auto;
+      position: relative;
+      border-radius: 10px;
+    }
+
+    .progress-bar .fill {
+      height: 100%;
+      background-color: #4CAF50;
+      width: 0%;
+      position: absolute;
+      left: 0;
+      top: 0;
+      border-radius: 10px;
+      transition: width 0.5s ease-in-out;
+    }
+
+    .content {
+      padding: 20px;
+      max-width: 800px;
+      margin: 0 auto;
+      display: none;
+    }
+
+    .note, .analogy {
+      background-color: #f5f5f5;
+      padding: 15px;
+      margin-bottom: 20px;
+      border-radius: 8px;
+    }
+
+    .button {
+      background-color: #4CAF50;
+      color: white;
+      padding: 12px 24px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      transition: background-color 0.3s ease;
+    }
+
+    .button:hover {
+      background-color: #45a049;
+    }
+
+    .close-button {
+      font-size: 24px;
+      color: black;
+      text-decoration: none;
+      margin-right: 20px;
+    }
+
+    .header-title {
+      flex-grow: 1;
+      text-align: center;
+    }
+
+    .container {
+      display: flex;
+      flex-direction: row; /* Horizontal layout */
+      margin-top: 20px;
+      overflow: hidden; /* Prevent wrapping */
+      white-space: nowrap; /* Prevent wrapping */
+    }
+
+    .box {
+      width: 50px;
+      height: 50px;
+      margin-right: 5px; /* Adjust spacing between boxes */
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 2px solid #000;
+      font-size: 24px;
+      opacity: 0;
+      transform: scale(0);
+      transition: transform 0.5s, opacity 0.5s;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <a href="#" class="close-button">X</a>
+    <h1 class="header-title">Counting in 1s, 2s, 5s and 10s</h1>
+  </header>
+  <div class="progress-bar">
+    <div class="fill" id="progressFill"></div>
+  </div>
+
+  <div class="content" id="page0">
+    <div class="note">Counting in 1s: This means counting every single number normally, making sure not to skip any number.</div>
+    <div class="analogy">
+      How to do it: Let’s start at 1 and continue from there: 1, 2, 3, 4, 5, 6, 7, and so on! 
+     <br />
+      <button id="start1Button">Start</button>
+      <div id="container1" class="container"></div>
+    </div>
+  </div>
+
+  <div class="content" id="page1">
+    <div class="note">Counting in 2s: This means when you count you have to skip every other number so you can count faster.</div>
+    <div class="analogy">
+      How to do it: Start at 2 and continue: 2, 4, 6, 8, 10, 12, and so on! 
+      <button id="start2Button">Start</button>
+      <div id="container2" class="container"></div>
+    </div>
+  </div>
+
+  <button class="button" onclick="nextPage ()">Next</button>
+
+  <script>
+    const progressFill = document.getElementById('progressFill');
+    const pages = document.querySelectorAll('.content');
+    let currentPage = 0;
+
+    function nextPage() {
+      if (currentPage < pages.length - 1) {
+        pages[currentPage].style.display = 'none';
+        currentPage++;
+        pages[currentPage].style.display = 'block';
+        progressFill.style.width = ((currentPage + 1) / pages.length) * 100 + '%';
+      }
+    }
+
+    function startAnimation(containerId, step = 1, limit = 10) {
+      const container = document.getElementById(containerId);
+      container.innerHTML = '';
+      for (let i = 1; i <= limit; i++) {
+        const box = document.createElement('div');
+        box.className = 'box';
+        box.textContent = i * step;
+        container.appendChild(box);
+
+        setTimeout(() => {
+          box.style.opacity = 1;
+          box.style.transform = 'scale(1)';
+        }, i * 1000);
+      }
+    }
+
+    document.getElementById('start1Button').addEventListener('click', () => {
+      startAnimation('container1', 1);
+    });
+
+    document.getElementById('start2Button').addEventListener('click', () => {
+      startAnimation('container2', 2);
+    });
+
+    // Initialize the first page
+    pages[0].style.display = 'block';
+  </script>
+</body>
+</html>
